@@ -5,38 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <title>Cadastro de Pessoas</title>
+    <style>
+       .form-control{
+        border: 3px solid black;
+       } 
+
+    </style>
   </head>
   <body>
     <h1>Cadastros de Pessoas</h1>
 
     <form>
   <div class="form-group">
-    <label for="exampleInputEmail1">Nome:</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1"><b>Nome:</b></label>
+    <input type="text" class="form-control" name="nome" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Sobrenome:</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1"><b>Sobrenome:</b></label>
+    <input type="text" class="form-control" name="sobrenome" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Email:</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1"><b>Email:</b></label>
+    <input type="email" class="form-control" name="email" required>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">Telefone:</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="exampleInputEmail1"><b>Telefone:</b></label>
+    <input type="text" class="form-control" name="telefone" required>
   </div>
   <div class="form-group col-md-4">
-      <label for="inputState">Tipo de Documento</label>
+      <label for="inputState"><b>Tipo de Documento</b></label>
       <select id="inputState" class="form-control">
-        <option selected>Selecione...</option>
+        <option selected><b>Selecione...</b></option>
         <option>CPF</option>
         <option>CNPJ</option>
       </select>
     </div>
   <button type="submit" class="btn btn-primary">Adicionar</button>
 </form>
-
+<br><br>
 
  <div class = "container">
   <table class="table">
@@ -46,19 +52,27 @@
       <th scope="col">Nome Completo</th>
       <th scope="col">Email</th>
       <th scope="col">Telefone</th>
-      <th scope="col">Tipo de Docuemnto</th>
+      <th scope="col">Tipo de Documento</th>
       <th scope="col">Numero de Documento</th>
+      <th scope="col">Ações</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">1</th>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+    @foreach($pessoas as $pessoa)
+      <th scope="row">{{$pessoa->id}}</th>
+      <td>{{$pessoa->nome}} {{$pessoa->sobrenome}}</td>
+      <td>{{$pessoa->email}}</td>
+      <td>{{$pessoa->telefone}}</td>
+      <td>{{$pessoa->tipodoc}}</td>
+      <td>{{$pessoa->numdoc}}</td>
+      <td>
+    <a href="" class="btn btn-warning btn-sm">Editar</a>
+        <form method="POST" action="" style="display: inline" onsubmit="return confirm('Deseja excluir este registro?');" >
+            @csrf
+   <input type="hidden" name="_method" value="delete" >
+   <button class="btn btn-danger btn-sm">Excluir</button>
+    @endforeach
     </tr>
   </tbody>
 </table>
