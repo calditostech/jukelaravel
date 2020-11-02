@@ -16,5 +16,8 @@ class Pessoas extends Model
         'tipodoc',
         'numdoc'
     ];
+
+     protected $table='pessoas';
+     
     use HasFactory;
 }

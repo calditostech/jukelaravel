@@ -67,16 +67,17 @@
       <td>{{$pessoa->tipodoc}}</td>
       <td>{{$pessoa->numdoc}}</td>
       <td>
-    <a href="" class="btn btn-warning btn-sm">Editar</a>
-        <form method="POST" action="" style="display: inline" onsubmit="return confirm('Deseja excluir este registro?');" >
-            @csrf
-   <input type="hidden" name="_method" value="delete" >
-   <button class="btn btn-danger btn-sm">Excluir</button>
+    <a href="{{ route('pessoas.edit', $pessoa->id)}}" class="btn btn-primary">Editar</a>
+        <form action="{{ route('pessoas.destroy', $pessoa->id)}}" method="post">
+         @csrf @method('DELETE')
+          <button class="btn btn-danger" type="submit">Apagar<button>
+        </form>
+      </td>
+    </tr>
     @endforeach
     </tr>
   </tbody>
 </table>
-
  </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
