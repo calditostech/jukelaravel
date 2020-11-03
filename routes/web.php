@@ -12,7 +12,7 @@ Route::post('/pessoas/', [CtrlPessoas::class, 'insert'])->name('pessoas.insert')
 
 Route::put('/pessoas/{id}', [CtrlPessoas::class, 'update'])->name('pessoas.update');
 
-Route::delete('/pessoas/{id}', [DroneController::class, 'delete'])->name('pessoas.delete');
+Route::delete('/pessoas/{id}', [CtrlPessoas::class, 'delete'])->name('pessoas.delete');
 
 
 Route::resource('pessoas', CtrlPessoas::class);

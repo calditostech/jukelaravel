@@ -68,10 +68,8 @@
       <td>{{$pessoa->numdoc}}</td>
       <td>
     <a href="{{ route('pessoas.edit', $pessoa->id)}}" class="btn btn-primary">Editar</a>
-        <form action="{{ route('pessoas.destroy', $pessoa->id)}}" method="post">
+        <a href="{{ route('pessoas.destroy', $pessoa->id)}}" class="btn btn-danger">Apagar</a>
          @csrf @method('DELETE')
-          <button class="btn btn-danger" type="submit">Apagar<button>
-        </form>
       </td>
     </tr>
     @endforeach
